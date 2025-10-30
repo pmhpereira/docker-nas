@@ -88,16 +88,19 @@ services:
     volumes:
       - /share/Container/adguardhome/workdir:/opt/adguardhome/work
       - /share/Container/adguardhome/confdir:/opt/adguardhome/conf
+    ports:
+      - 88:80
     restart: unless-stopped
     network_mode: host
 
   nginx-proxy-manager:
     image: 'docker.io/jc21/nginx-proxy-manager:latest'
-    restart: unless-stopped
-    ports:
-      - '80:80'
-      - '81:81'
-      - '443:443'
+    container_name: nginx-proxy-manager
     volumes:
       - /share/Container/nginx-proxy-manager/data:/data
       - /share/Container/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    ports:
+      - 80:80
+      - 81:81
+      - 443:443
+    restart: unless-stopped
