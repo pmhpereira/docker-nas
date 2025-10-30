@@ -69,3 +69,16 @@ services:
       - 9000:9000
       - 8000:8000
     restart: unless-stopped
+
+  homeassistant:
+    image: "ghcr.io/home-assistant/home-assistant:stable"
+    container_name: homeassistant
+    environment:
+      - TZ=Europe/Lisbon
+    volumes:
+      - /share/Container/homeassistant:/config
+      - /etc/localtime:/etc/localtime:ro
+      - /run/dbus:/run/dbus:ro
+    restart: unless-stopped
+    privileged: true
+    network_mode: host
