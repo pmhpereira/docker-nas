@@ -115,6 +115,7 @@ services:
     volumes:
       - /share/Container/nginx-proxy-manager/data:/data
       - /share/Container/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - /share/Container/nginx-proxy-manager/tmp:/tmp
     ports:
       - 80:80
       - 81:81
