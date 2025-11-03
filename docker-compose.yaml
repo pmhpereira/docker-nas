@@ -32,7 +32,7 @@ services:
     volumes:
       - /share/Container/radarr:/config
       - /share/Multimedia/Movies:/movies
-      - /share/Downloads/NZBGet/completed/Movies:/downloads
+      - /share/Downloads/Torrent/completed/Movies:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -50,7 +50,7 @@ services:
     volumes:
       - /share/Container/sonarr:/config
       - /share/Multimedia/TV:/tv
-      - /share/Downloads/NZBGet/completed/TV:/downloads
+      - /share/Downloads/Torrent/completed/TV:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
