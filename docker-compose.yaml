@@ -149,6 +149,25 @@ services:
       qnet-static:
         ipv4_address: 192.168.1.9
 
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - PUID=1000
+      - PGID=0
+      - LOG_LEVEL=info
+      - LOG_HTML=false
+      - CAPTCHA_SOLVER=none
+      - TZ=Europe/Lisbon
+    volumes:
+      - /share/Container/flaresolverr:/config
+    ports:
+      - 8191:8191
+    restart: unless-stopped
+    networks:
+      qnet-static:
+        ipv4_address: 192.168.1.10
+        
 networks:
   qnet-static:
     driver: qnet
@@ -161,3 +180,5 @@ networks:
       config:
         - subnet: 192.168.1.0/24
           gateway: 192.168.1.254
+
+# Set DNS to 1.1.1.1 and 8.8.8.8 manually
