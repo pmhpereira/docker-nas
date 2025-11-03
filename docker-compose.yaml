@@ -1,18 +1,22 @@
 # originally from https://github.com/jimmybish/qnap-docker-compose/
 
 services:
-  nzbget:
-    image: ghcr.io/linuxserver/nzbget
-    container_name: nzbget
-    environment:      
+  qbittorrent:
+    image: lscr.io/linuxserver/qbittorrent:latest
+    container_name: qbittorrent
+    environment:
       - PUID=1000
       - PGID=0
       - TZ=Europe/Lisbon
+      - WEBUI_PORT=8080
+      - TORRENTING_PORT=6881
     volumes:
-      - /share/Container/nzbget:/config
-      - /share/Downloads/NZBGet:/downloads
+      - /share/Container/qbittorrent:/config
+      - /share/Downloads/Torrent:/downloads
     ports:
-      - 6789:6789
+      - 8080:8080
+      - 6881:6881
+      - 6881:6881/udp
     restart: unless-stopped
     networks:
       qnet-static:
