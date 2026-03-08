@@ -25,8 +25,8 @@ services:
     ports:
       - "2283:2283"
     depends_on:
-      - immich-redis
-      - immich-database
+      - redis
+      - database
     restart: always
     healthcheck:
       disable: false
